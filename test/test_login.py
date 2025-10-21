@@ -1,0 +1,19 @@
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+
+
+def test_valid_login(logged_in_driver): 
+    try:      
+        driver = logged_in_driver
+        titulo_pagina = driver.current_url
+        assert  "/inventory.html" in titulo_pagina, "No se pudo iniciar sesión correctamente"
+
+    except Exception as e:
+        print(f"Test fallido debido a una excepción: {e}")    
+        raise
+    
+    finally:
+        driver.quit()
+    
+
+
