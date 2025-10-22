@@ -7,7 +7,7 @@ def test_valid_login(logged_in_driver):
         driver = logged_in_driver
         titulo_pagina = driver.current_url
         assert  "/inventory.html" in titulo_pagina, "No se pudo iniciar sesión correctamente"
-
+        print("Test de inicio de sesión exitoso.")
     except Exception as e:
         print(f"Test fallido debido a una excepción: {e}")    
         raise

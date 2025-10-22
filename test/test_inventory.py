@@ -9,7 +9,7 @@ def test_inventory(logged_in_driver):
 
         productos = driver.find_elements(By.CLASS_NAME, "inventory_item")
         assert len(productos) > 0, "No se encontraron productos en la página de inventario"
-    
+        print("Test de inventario exitoso.")
     except Exception as e:
         print(f"Error en test_inventory : {e}")    
         raise

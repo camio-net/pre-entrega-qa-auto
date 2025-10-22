@@ -6,7 +6,7 @@ import os
 os.makedirs("reportes", exist_ok=True)
 
 # Generar nombre único con fecha y hora (válido para Windows)
-fecha_hora = datetime.now().strftime("%d-%m-%y_%H-%M-%S")
+fecha_hora = datetime.now().strftime("%d-%m-%y_%H.%M.%S")
 reporte_nombre = f"report_{fecha_hora}.html"
 ruta_reporte = os.path.join("reportes", reporte_nombre)
 
