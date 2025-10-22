@@ -13,7 +13,9 @@ ruta_reporte = os.path.join("reportes", reporte_nombre)
 # Lista de pruebas a ejecutar
 test_cases = [
     "test/test_login.py",
-    "test/test_inventory.py"
+    "test/test_inventory.py",
+    "test/test_carritoCompras.py"
+   
 ]
 
 # Argumentos de pytest con el nombre dinámico del reporte
