@@ -15,9 +15,11 @@ Garantizar la estabilidad y fiabilidad de las funcionalidades principales median
 Este proyecto tiene como objetivo principal simular casos reales de uso del usuario final y asegurar la calidad del sistema mediante la detección temprana de errores o comportamientos inesperados.
 
 Las dependencias se instalan de la siguiente forma, utilizando la consola:
+
 pip install selenium
 
 pip install pytest
 
 Las pruebas se ejecutan a travez del archivo run_test.py evitando ejecutarlas en la consola a travez de python -m pytest ....py segun corresponda el nombre del archivo.
+
 
