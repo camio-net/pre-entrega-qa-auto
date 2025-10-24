@@ -22,4 +22,6 @@ pip install pytest
 
 Las pruebas se ejecutan a travez del archivo run_test.py evitando ejecutarlas en la consola a travez de python -m pytest ....py segun corresponda el nombre del archivo.
 
+En este proyecto se implementó una funcionalidad adicional que permite generar un reporte distinto en cada ejecución, utilizando la fecha y hora actual para identificar automáticamente cada reporte generado al correr el archivo run_test.py.
+
 
