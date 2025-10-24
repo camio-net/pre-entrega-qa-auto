@@ -23,7 +23,10 @@ def test_carrito_compras(logged_in_driver):
         #Remover el producto del carrito y validar
         productos_carrito = driver.find_elements(By.CLASS_NAME,"cart_item")
         productos_carrito[0].find_element(By.TAG_NAME,"button").click()
-        assert carrito == "1", "El producto no se agregó al carrito correctamente"
+        WebDriverWait(driver, 5).until(
+        lambda driver: driver.find_element(By.CLASS_NAME, "shopping_cart_link").text == ""
+        )       
+        print("Producto removido del carrito correctamente.")
 
     except Exception as e:
         print(f"Error en test_carrito_compras : {e}")
