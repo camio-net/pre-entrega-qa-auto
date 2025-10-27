@@ -2,9 +2,9 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 
-def test_valid_login(logged_in_driver): 
+def test_valid_login(login_page): 
     try:      
-        driver = logged_in_driver
+        driver = login_page 
         pagina = driver.current_url
         assert  "/inventory.html" in pagina, "No se pudo iniciar sesión correctamente"
         print("Test de inicio de sesión exitoso.")
