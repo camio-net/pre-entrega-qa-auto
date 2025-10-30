@@ -1,9 +1,9 @@
 from selenium.webdriver.common.by import By
 import pytest   
 
-def test_inventory(logged_in_driver):
+def test_inventory(login_page):
     try:
-        driver = logged_in_driver
+        driver = login_page
         
         #Validacion del titulo de la pagina y la presencia de productos
         assert driver.title == "Swag Labs", "El título de la página no es correcto"
