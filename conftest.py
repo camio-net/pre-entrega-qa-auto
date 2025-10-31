@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 import pytest
-from pages.login_page import login_page as login
+from pages.loginPage import login_page as login
 
 @pytest.fixture
 def driver():
@@ -10,6 +10,6 @@ def driver():
     driver.quit()
 
 @pytest.fixture
-def login_page(driver):
-    login(driver).abrir_pagina().login("standard_user", "secret_sauce")
+def login_page(driver,usuario,password):
+    login(driver).abrir_pagina().login(usuario,password)
     return driver
