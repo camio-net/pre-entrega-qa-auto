@@ -3,9 +3,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_carrito_compras(logged_in_driver):
+def test_carrito_compras(login_page):
     try:
-        driver = logged_in_driver
+        driver = login_page
 
         # Agregar primer producto al carrito y validar
         productos = driver.find_elements(By.CLASS_NAME,"inventory_item")
