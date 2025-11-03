@@ -3,7 +3,7 @@ from selenium import webdriver
 import pytest
 
 from utils.datos import leer_csv_login
-from pages.loginPage import login_page
+from pages.loginPage import login_page 
 
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioInvalido.csv"))

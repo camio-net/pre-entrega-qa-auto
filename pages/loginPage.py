@@ -42,3 +42,7 @@ class login_page:
         self.hacer_clic_en_login()
         return self
     
+    def obtener_error(self):
+        div_error = self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".error-message-container h3")))
+        return div_error.text
+    
