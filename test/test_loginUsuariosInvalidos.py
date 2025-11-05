@@ -6,13 +6,14 @@ from utils.datos import leer_csv_login
 from pages.loginPage import login_page 
 
 
-@pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioInvalido.csv"))
+@pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarios.csv"))
 def test_login_validation(login_page, usuario, password, debe_funcionar):
     driver = login_page
 
-    print(debe_funcionar)
-    if debe_funcionar == 'True':
+    
+    if debe_funcionar:
         assert "/inventory.html" in driver.current_url, "No se redirgio al inventario"
-    elif debe_funcionar == 'False':
+    elif debe_funcionar:
         mensaje_error = login_page(driver).obtener_error()
         assert "Epic sadface" in mensaje_error, "el mensaje de error no se esta mostrando"
+        print(mensaje_error)

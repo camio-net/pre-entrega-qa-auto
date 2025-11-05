@@ -8,5 +8,6 @@ def leer_csv_login(ruta_archivo):
         lector = csv.DictReader(archivo)
 
         for fila in lector:
-            datos.append((fila["usuario"], fila["password"], fila["debe_funcionar"]))
+            debe_funcionar = fila["debe_funcionar"].lower() == 'true'
+            datos.append((fila["usuario"], fila["password"], debe_funcionar))
     return datos
