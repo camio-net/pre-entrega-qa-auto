@@ -12,7 +12,7 @@ ruta_reporte = os.path.join("reportes", reporte_nombre)
 
 # Lista de pruebas a ejecutar
 test_cases = [
-    "test/test_loginUsuariosInvalidos.py"
+    "test/test_loginUsuarios.py"
    
 ]
 
