@@ -9,8 +9,14 @@ from utils.datos import leer_csv_login
 from pages.loginPage import login_page 
 
 class inventory_page:
-        
-    url = "https://www.saucedemo.com/inventory.html"
+
+    _INVENTORY_ITEMS = (By.CLASS_NAME, "inventory_item")
+    _ADD_TO_CART_BUTTON = (By.CLASS_NAME, "btn_inventory")
+    _CART_COUNT = (By.CLASS_NAME, "shopping_cart_badge")
+    _ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
+    _CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
+
+
     @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
     def test_login_validation(login_page, usuario, password, debe_funcionar):
         driver = login_page
@@ -20,14 +26,40 @@ class inventory_page:
             self.wait = WebDriverWait(driver, 10)
 
     #validacion del login exitoso
-    def titulo_inventario(self):
-        titulo = self.title == "Swag Labs"
-        return titulo
+    def obtener_items_inventario(self):
+        self.wait.until(EC.presence_of_all_elements_located(self._INVENTORY_ITEMS))
+        productos = self.driver.find_elements(*self._INVENTORY_ITEMS) 
+        return productos
+    
+    def obtener_nombres_items(self):
+        self.wait.until(EC.presence_of_all_elements_located(self._ITEM_NAME))
+        nombres = self.driver.find_elements(*self._ITEM_NAME)
+        return [nombre.text for nombre in nombres]
+    
+    def agregar_item_al_carrito(self):
+        self.wait.until(EC.element_to_be_clickable(self._ADD_TO_CART_BUTTON))
+        botones_agregar = self.driver.find_elements(*self._ADD_TO_CART_BUTTON)
+        botones_agregar[0].click()  # Agrega el primer item al carrito
 
-    #funcion para saber cantidad de productos en inventario
+    def agregar_producto_nombre(self, nombre_producto):
+        productos = self.obtener_nombres_items()
+        for producto in productos:
+            nombre= producto.find_element(*self._ITEM_NAME).text
+            if nombre.strip() == nombre_producto.strip():
+                producto.find_element(*self._ADD_TO_CART_BUTTON).click()
+                return self
+        raise Exception(f"Producto con nombre '{nombre_producto}' no encontrado.")
+    
+    def abrir_carrito(self):
+        self.wait.until(EC.element_to_be_clickable(self._CART_LINK))
+        carrito = self.driver.find_element(*self._CART_LINK)
+        carrito.click()
 
-    def cantidad_productos(self):
-        productos = self.find_elements(By.CLASS_NAME, "inventory_item")
-        return len(productos)
-
-
+    def obtener_cantidad_carrito(self):
+        try:
+            self.wait.until(EC.presence_of_element_located(self._CART_COUNT))
+            contador = self.driver.find_element(*self._CART_COUNT)
+            return int(contador.text) 
+        except Exception as e:
+            print(f"Error al obtener la cantidad del carrito: {e}")
+            return 0

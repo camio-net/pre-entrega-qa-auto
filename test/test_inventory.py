@@ -1,38 +1,31 @@
 from selenium.webdriver.common.by import By
 import pytest   
 from pages.inventoryPage import inventory_page
+from utils.datos import leer_csv_login
 
-
-
-
-
-
-
-'''
-def test_inventory(login_page):
+@pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
+def test_login_validation(login_page, usuario, password, debe_funcionar):
     try:
-        
-        
+        driver = login_page
+        inventory = inventory_page(driver)
+
         #Validacion del titulo de la pagina y la presencia de productos
         assert driver.title == "Swag Labs", "El título de la página no es correcto"
-        print("Título de la página verificado correctamente.")
         
-        #Validacion de la presencia de productos en la pagina
-        productos = driver.find_elements(By.CLASS_NAME, "inventory_item")
-        assert len(productos) > 0, "No se encontraron productos en la página de inventario"
-        print("Test de inventario exitoso.")
+        #Validar que hay productos en el inventario
+        productos = inventory.obtener_items_inventario()
 
-        #Leer el nombre y precio del primer producto
-        nombreProducto = productos[0].find_element(By.CLASS_NAME, "inventory_item_name").text
-        precioProducto = productos[0].find_element(By.CLASS_NAME, "inventory_item_price").text
-
-        print(f"Primer producto encontrado: {nombreProducto} con precio {precioProducto}")
-
+        #Validar carrito esta vacio
+        #assert inventory.obtener_cantidad_carrito() == 0, "El carrito no está vacío"
+        #Validar agregar primer producto al carrito
+        inventory.agregar_item_al_carrito()
+        #Validar que el carrito tiene 1 producto
+        assert inventory.obtener_cantidad_carrito() == 1, "El carrito no tiene producto"
+        
 
     except Exception as e:
-        print(f"Error en test_inventory : {e}")    
+        print(f"Error en test_login_validation: {e}")
         raise
-    
     finally:
-        driver.quit()   
-        ''''''
+        driver.quit()
+
