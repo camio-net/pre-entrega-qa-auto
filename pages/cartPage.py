@@ -7,16 +7,16 @@ import pytest
 class cart_Page:
 
     _CART_ITEMS = (By.CLASS_NAME, "cart_item")
-    _CART_ITEMS = (By.ID, "inventory_item_name")
+    _CART_ITEMS_NAMES = (By.ID, "inventory_item_name")
 
     def __init__(self, driver):
         self.driver = driver
-        self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
 
     def obtener_items_carrito(self):
         productos = self.wait.until(EC.visibility_of_all_elements_located(self._CART_ITEMS))
         return productos
 
     def obtener_nombres_items_carrito(self):
-        nombres = self.wait.until(EC.visibility_of_all_elements_located(self._CART_ITEMS))
-        return [nombre.text for nombre in nombres]
+        nombre = self.wait.until(EC.visibility_of_all_elements_located(self._CART_ITEMS_NAMES))
+        return nombre.text
