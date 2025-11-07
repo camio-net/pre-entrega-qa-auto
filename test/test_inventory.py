@@ -16,10 +16,10 @@ def test_login_validation(login_page, usuario, password, debe_funcionar):
         productos = inventory.obtener_items_inventario()
 
         #Validar carrito esta vacio
-        #assert inventory.obtener_cantidad_carrito() == 0, "El carrito no está vacío"
+        assert inventory.obtener_cantidad_carrito() == 0, "El carrito no está vacío"
+        
         #Validar agregar primer producto al carrito
         inventory.agregar_item_al_carrito()
-        #Validar que el carrito tiene 1 producto
         assert inventory.obtener_cantidad_carrito() == 1, "El carrito no tiene producto"
         
 
