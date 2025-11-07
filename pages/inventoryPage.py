@@ -34,6 +34,8 @@ class inventory_page:
     def obtener_nombres_items(self):
         productos = self.driver.find_elements(*self._ITEM_NAME)
         return [producto_nombre.text for producto_nombre in productos]
+
+
     
     def agregar_item_al_carrito(self):
         productos = self.wait.until(EC.visibility_of_all_elements_located(self._INVENTORY_ITEMS)) 
@@ -43,12 +45,16 @@ class inventory_page:
         
 
     def agregar_producto_nombre(self, nombre_producto):
-        productos = self.obtener_nombres_items()
+        productos = self.driver.find_elements(*self._INVENTORY_ITEMS)   
+
         for producto in productos:
-            nombre= producto.find_element(*self._ITEM_NAME).text
+            nombre = producto.find_element(*self._ITEM_NAME).text
+
             if nombre.strip() == nombre_producto.strip():
-                producto.find_element(*self._ADD_TO_CART_BUTTON).click()
+                boton = producto.find_element(*self._ADD_TO_CART_BUTTON)
+                boton.click()
                 return self
+            
         raise Exception(f"Producto con nombre '{nombre_producto}' no encontrado.")
     
     def abrir_carrito(self):
