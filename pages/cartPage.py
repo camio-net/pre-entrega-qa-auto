@@ -18,5 +18,5 @@ class cart_Page:
         return productos
 
     def obtener_nombres_items_carrito(self):
-        nombre_producto = self.wait.until(EC.visibility_of_element_located(self._CART_ITEM_NAME))
+        nombre_producto = self.wait.until(EC.visibility_of_element_located(self._CART_ITEMS_NAME))
         return nombre_producto.text
