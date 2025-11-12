@@ -1,5 +1,0 @@
-usuario,password,debe_funcionar
-admin,1234,False
-standard_user,secret_sauce,True
-standard_user, ,False
-,secret_sauce,False
