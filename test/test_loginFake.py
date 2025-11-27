@@ -4,6 +4,7 @@ import pytest
 from pages.loginPage import login_page 
 from faker import Faker
 from utils.datos import leer_csv_login
+from utils.logger import logger
 
 faker = Faker()
 
@@ -24,8 +25,10 @@ def test_login_validation(login_page, usuario, password, debe_funcionar):
 
     
     if debe_funcionar:
+        logger.info("Verificando que el login fue exitoso")
         assert "/inventory.html" in driver.current_url, "No se redirgio al inventario"
     elif debe_funcionar:
         mensaje_error = login_page(driver).obtener_error()
+        logger.info("Verificando que el mensaje de error se muestra correctamente")
         assert "Epic sadface" in mensaje_error, "el mensaje de error no se esta mostrando"
         print(mensaje_error)

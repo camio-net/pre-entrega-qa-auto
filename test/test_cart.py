@@ -5,6 +5,7 @@ from utils.datos import leer_csv_login
 import pytest
 from pages.inventoryPage import inventory_page  
 from pages.cartPage import cart_Page
+from utils.logger import logger
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
 def test_cart(login_page, usuario, password, debe_funcionar):
@@ -22,6 +23,7 @@ def test_cart(login_page, usuario, password, debe_funcionar):
         cartPage = cart_Page(driver)
 
         productos_carrito = cartPage.obtener_items_carrito()
+        logger.info("Validando que el carrito contenga un producto")
         assert len(productos_carrito) == 1, "El carrito debe contener un producto."
         
 

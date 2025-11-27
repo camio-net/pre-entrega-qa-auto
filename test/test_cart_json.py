@@ -6,7 +6,7 @@ import pytest
 from pages.inventoryPage import inventory_page  
 from pages.cartPage import cart_Page
 from utils.lector_json import leer_json
-
+from utils.logger import logger
 
 ruta_json_productos = "datos/productos.json"
 
@@ -27,7 +27,7 @@ def test_cart_json(login_page, usuario, password, debe_funcionar,nombre_producto
 
         #validar que el producto agregado este en el carrito
         cartPage = cart_Page(driver)
-        
+        logger.info(f"Validando que el producto {nombre_producto} este en el carrito de compras")
         assert cartPage.obtener_nombres_items_carrito() == nombre_producto, f"El producto {nombre_producto} no se encuentra en el carrito."
 
         

@@ -10,7 +10,7 @@ from utils.logger import logger
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
 def test_login_validation(login_page, usuario, password, debe_funcionar):
-    logger.info(f"completando con los datos de usario")
+    logger.info("completando con los datos de usario")
     driver = login_page
 
     
@@ -19,6 +19,7 @@ def test_login_validation(login_page, usuario, password, debe_funcionar):
         assert "/inventory.html" in driver.current_url, "No se redirgio al inventario"
         logger.info("El login fue exitoso") 
     elif debe_funcionar:
+        logger.info("Verificando que el mensaje de error se muestra correctamente")
         mensaje_error = login_page(driver).obtener_error()
         assert "Epic sadface" in mensaje_error, "el mensaje de error no se esta mostrando"
         print(mensaje_error)
