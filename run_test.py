@@ -16,7 +16,8 @@ test_cases = [
     "test/test_inventory.py",
     "test/test_cart.py",
     "test/test_cart_json.py",
-    "test/test_loginFake.py"
+    "test/test_loginFake.py",
+    "test/test_api_request.py"
 ]
 
 # Argumentos de pytest con el nombre dinámico del reporte
