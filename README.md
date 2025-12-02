@@ -45,13 +45,15 @@ componentes - Fácil mantenimiento y escalabilidad
 
     📦 Proyecto-Automation
      ┣ 📂 datos
-     ┃ ┣ data_login.csv
+     ┃ ┣ datos_usuarioValido.csv
      ┃ ┗ productos.json
      ┣ 📂 logs
      ┃ ┗ suite.log
      ┣ 📂 pages
+     ┣ 📂 reportes
      ┣ 📂 tests
      ┣ 📂 utils
+     ┣ conftest.py
      ┣ run_test.py
      ┗ README.md
 
@@ -113,7 +115,7 @@ Se generan automáticamente cuando una prueba falla.
 
 ## 📦 Manejo de Datos Externos
 
--   `data_login.csv` → usuarios válidos/invalidos
+-   `datos_usuarioValido.csv` → usuarios válidos/invalidos
 -   `productos.json` → productos del inventario
 
 ## ✔ Conclusión
