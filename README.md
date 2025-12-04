@@ -50,12 +50,13 @@ La estructura está basada en Page Object Model:
      ┃ ┗ suite.log
      ┣ 📂 pages
      ┣ 📂 reportes
-     ┣ ┣ 📂 reportes_html
+     ┣ ┣ 📂 reportes_html (Historial de reportes por fecha y hora de finalizacion)
      ┣ ┗ 📂 screenshots
      ┣ 📂 tests
      ┣ 📂 utils
      ┣ conftest.py
      ┣ run_test.py
+     ┣ report.html (Ultimo reporte realizado)
      ┗ README.md
 
 ## 📊 Reportes, Logs y Capturas
