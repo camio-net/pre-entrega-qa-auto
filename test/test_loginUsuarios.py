@@ -6,13 +6,13 @@ from utils.datos import leer_csv_login
 from pages.loginPage import login_page 
 
 from utils.logger import logger
-
+from pages.loginPage import login_page as login
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
 def test_login_validation(login_page, usuario, password, debe_funcionar):
     logger.info("completando con los datos de usario")
     driver = login_page
-
+    login(driver).login(usuario, password)
     
     if debe_funcionar:
         logger.info("Verificando que el login fue exitoso")

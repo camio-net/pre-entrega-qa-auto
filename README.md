@@ -5,9 +5,10 @@ Automatización UI + API con Selenium, Pytest y Requests
 ## 📌 Descripción del Proyecto
 
 Este proyecto forma parte del trabajo final del curso **Tester QA
-Automation**. El objetivo es automatizar pruebas funcionales sobre el
-sitio **https://www.saucedemo.com**, aplicando buenas prácticas y
-simulando situaciones reales de un usuario final.
+Automation**.\
+El objetivo es automatizar pruebas funcionales sobre el sitio
+**https://www.saucedemo.com**, aplicando buenas prácticas y simulando
+situaciones reales de un usuario final.
 
 Las pruebas incluyen flujos completos de login, interacción con
 inventario, carrito de compras y automatización de API utilizando
@@ -19,29 +20,27 @@ logs y capturas de pantalla.
 
 ## 🎯 Objetivos
 
--   Validar el correcto funcionamiento del **login**.
+-   Validar el correcto funcionamiento del **login**.\
 -   Verificar la redirección a la página principal luego de iniciar
-    sesión.
--   Probar el comportamiento del **carrito de compras**.
--   Ejecutar pruebas automatizadas de **API REST**.
--   Generar reportes HTML, logs y evidencias.
+    sesión.\
+-   Probar el comportamiento del **carrito de compras**.\
+-   Ejecutar pruebas automatizadas de **API REST**.\
+-   Generar reportes HTML, logs y evidencias.\
 -   Mantener un proyecto escalable y con arquitectura profesional.
 
 ## 🛠 Tecnologías Utilizadas
 
--   Python 3.x
--   Selenium WebDriver
--   Pytest
--   Requests
--   Faker
--   CSV / JSON
+-   Python 3.x\
+-   Selenium WebDriver\
+-   Pytest\
+-   Requests\
+-   Faker\
+-   CSV / JSON\
 -   Logging nativo de Python
 
 ## 📁 Arquitectura del Proyecto (POM)
 
-La estructura está basada en Page Object Model, lo que permite: -
-Separación clara entre tests y lógica de interacción - Reutilización de
-componentes - Fácil mantenimiento y escalabilidad
+La estructura está basada en Page Object Model:
 
     📦 Proyecto-Automation
      ┣ 📂 datos
@@ -51,6 +50,8 @@ componentes - Fácil mantenimiento y escalabilidad
      ┃ ┗ suite.log
      ┣ 📂 pages
      ┣ 📂 reportes
+     ┣ ┣ 📂 reportes_html
+     ┣ ┗ 📂 screenshots
      ┣ 📂 tests
      ┣ 📂 utils
      ┣ conftest.py
@@ -61,31 +62,51 @@ componentes - Fácil mantenimiento y escalabilidad
 
 ### ✔ Reportes HTML automáticos
 
-En cada ejecución se genera **un nuevo reporte**, sin sobrescribir el
-anterior.
+Se genera un nuevo reporte en:
 
-Formato del nombre:
+    reportes/reportes_html/
+
+Formato:
 
     report_YYYY-MM-DD_HH-MM-SS.html
 
 ### ✔ Log de ejecución
 
-Se genera automáticamente un registro en:
-
     logs/suite.log
 
 ### ✔ Capturas de pantalla
 
-Se generan automáticamente cuando una prueba falla.
+    reportes/screenshots/
+
+## ⚙️ Configuración para pruebas de API (Reqres)
+
+1.  Registrate en https://reqres.in/ y obtené tu API Key.
+2.  Reemplazá tu clave en `conftest.py`:
+
+``` python
+@pytest.fixture
+def header_request():
+    return {"Authorization": "Bearer TU_API_KEY_AQUI"}
+```
+
+3.  Descomentá en `run_test.py`:
+
+``` python
+# "test/test_api_request.py",
+```
+
+4.  Ejecutá:
+
+```{=html}
+<!-- -->
+```
+    python run_test.py
 
 ## ▶️ Cómo ejecutar el proyecto
 
 ### 1️⃣ Instalar dependencias
 
-    pip install selenium
-    pip install pytest
-    pip install requests
-    pip install faker
+    pip install selenium pytest requests faker
 
 ### 2️⃣ Ejecutar todas las pruebas
 
@@ -93,30 +114,29 @@ Se generan automáticamente cuando una prueba falla.
 
 ## 🧪 Pruebas incluidas
 
-### 🔐 UI -- Login
+### UI --- Login
 
--   Login exitoso
--   Login fallido
--   Login con datos generados con Faker
+-   Login exitoso\
+-   Login fallido\
+-   Login con Faker
 
-### 🛒 UI -- Inventario / Carrito
+### UI --- Inventario / Carrito
 
--   Validación de productos
--   Agregar productos al carrito
--   Eliminar productos
--   Validación de contador del carrito
+-   Validación de productos\
+-   Agregar/eliminar productos\
+-   Contador del carrito
 
-### 🌐 API -- Reqres
+### API --- Reqres
 
--   GET Users
--   POST Create User
--   DELETE User
--   Validación de códigos HTTP, estructura JSON y tipos de datos
+-   GET Users\
+-   POST Create User\
+-   DELETE User\
+-   Validación de códigos y JSON
 
 ## 📦 Manejo de Datos Externos
 
--   `datos_usuarioValido.csv` → usuarios válidos/invalidos
--   `productos.json` → productos del inventario
+-   `datos_usuarioValido.csv`\
+-   `productos.json`
 
 ## ✔ Conclusión
 

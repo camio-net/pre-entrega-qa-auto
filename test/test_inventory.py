@@ -3,11 +3,15 @@ import pytest
 from pages.inventoryPage import inventory_page
 from utils.datos import leer_csv_login
 from utils.logger import logger
+from pages.loginPage import login_page as login
+
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
 def test_login_validation(login_page, usuario, password, debe_funcionar):
     try:
         driver = login_page
+        
+        login(driver).login(usuario, password)
         inventory = inventory_page(driver)
 
         #Validacion del titulo de la pagina y la presencia de productos

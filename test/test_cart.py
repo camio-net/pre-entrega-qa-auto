@@ -7,10 +7,13 @@ from pages.inventoryPage import inventory_page
 from pages.cartPage import cart_Page
 from utils.logger import logger
 
+from pages.loginPage import login_page as login
+
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/datos_usuarioValido.csv"))
 def test_cart(login_page, usuario, password, debe_funcionar):
     try:
         driver = login_page
+        login(driver).login(usuario, password)
         inventory = inventory_page(driver)
 
         #agregar producto al inventario
@@ -31,5 +34,4 @@ def test_cart(login_page, usuario, password, debe_funcionar):
         print(f"Error en test_carrito_compras : {e}")
         raise
 
-    finally:
-        driver.quit()
+    

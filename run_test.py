@@ -1,26 +1,29 @@
 from datetime import datetime
 import pytest
 import os
+import shutil
 
-# Crear carpeta "reportes" si no existe
-os.makedirs("reportes", exist_ok=True)
+# Crear carpeta "reportes/reportes_html" si no existe
+output_dir = os.path.join("reportes", "reportes_html")
+os.makedirs(output_dir, exist_ok=True)
 
-# Generar nombre único con fecha y hora (válido para Windows)
+# Generar nombre único con fecha y hora
 fecha_hora = datetime.now().strftime("%d-%m-%y_%H.%M.%S")
 reporte_nombre = f"report_{fecha_hora}.html"
-ruta_reporte = os.path.join("reportes", reporte_nombre)
+ruta_reporte = os.path.join(output_dir, reporte_nombre)
 
 # Lista de pruebas a ejecutar
 test_cases = [
+    #Para hacer prueba de api leer el readme.md
+    #"test/test_api_request.py",
     "test/test_loginUsuarios.py",
     "test/test_inventory.py",
     "test/test_cart.py",
     "test/test_cart_json.py",
     "test/test_loginFake.py",
-    "test/test_api_request.py"
 ]
 
-# Argumentos de pytest con el nombre dinámico del reporte
+# Argumentos de pytest con la nueva ruta
 pytest_args = test_cases + [
     f"--html={ruta_reporte}",
     "--self-contained-html",
@@ -29,3 +32,6 @@ pytest_args = test_cases + [
 
 # Ejecutar pytest
 pytest.main(pytest_args)
+
+# Copiar el mismo reporte a la raíz con nombre fijo
+shutil.copyfile(ruta_reporte, "report.html")

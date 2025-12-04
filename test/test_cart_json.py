@@ -7,6 +7,7 @@ from pages.inventoryPage import inventory_page
 from pages.cartPage import cart_Page
 from utils.lector_json import leer_json
 from utils.logger import logger
+from pages.loginPage import login_page as login
 
 ruta_json_productos = "datos/productos.json"
 
@@ -17,6 +18,9 @@ ruta_json_productos = "datos/productos.json"
 def test_cart_json(login_page, usuario, password, debe_funcionar,nombre_producto):
     try:
         driver = login_page
+        
+        login(driver).login(usuario, password)
+
         inventory = inventory_page(driver)
 
         #agregar producto al inventario
