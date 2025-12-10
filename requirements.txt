@@ -4,5 +4,3 @@ selenium
 faker
 requests
 webdriver-manager
-
-python pip install -r requirements.txt
