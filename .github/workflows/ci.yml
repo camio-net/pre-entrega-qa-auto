@@ -31,11 +31,11 @@ jobs:
 
       #4 Install dependencies
       - name: Instalar dependencias
-        run: python install -r requirements.txt
+        run: pip install -r requirements.txt
 
       #5 Ejecutar pruebas
       - name: Run Tests 
-        run: python3 run_tests.py
+        run: python3 run_test.py
 
       #6 Subir reporte de pruebas
       - name: Subir HTML report
