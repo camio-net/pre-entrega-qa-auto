@@ -143,3 +143,5 @@ def header_request():
 
 Este proyecto aplica conceptos fundamentales y avanzados de
 automatización QA con una arquitectura escalable y profesional.
+
+python pip install -r requirements.txt

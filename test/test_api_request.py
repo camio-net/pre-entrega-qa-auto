@@ -2,7 +2,7 @@ import requests
 import pytest
 from utils.logger import logger
 
-
+@pytest.mark.skip(reason="Solo para pruebas de API")
 #Obtener usuarios de la API
 def test_get_users(url_base,header_request):
     response = requests.get(f"{url_base}/2", headers=header_request)
@@ -15,7 +15,7 @@ def test_get_users(url_base,header_request):
     logger.info("Validando el ID del usuario obtenido")
     assert data["data"]["id"] == 2,logger.error("-----El ID del usuario no coincide")
     
-
+@pytest.mark.skip(reason="Solo para pruebas de API")
 #Crear un nuevo usuario
 def test_create_user(url_base,header_request):
     payload = {
@@ -36,7 +36,7 @@ def test_create_user(url_base,header_request):
     assert data["job"] == "Tester Auto",logger.error("-----El trabajo del usuario no coincide")
     
 
-
+@pytest.mark.skip(reason="Solo para pruebas de API")
 #Eliminar un usuario
 def test_delete_user(url_base,header_request):
     response = requests.delete(f"{url_base}/2", headers=header_request)
