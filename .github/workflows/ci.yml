@@ -17,6 +17,12 @@ jobs:
       - name: Checkout codigo
         uses: actions/checkout@v4
 
+      # Ajustar timezone a Buenos Aires
+      - name: Set timezone to Argentina
+        run: |
+          sudo timedatectl set-timezone America/Argentina/Buenos_Aires
+          date  
+
       #2 cache de pip
       - name: Cache dependencia
         uses: actions/cache@v4    
