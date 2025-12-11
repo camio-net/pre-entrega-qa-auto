@@ -1,6 +1,6 @@
 import pytest
 
-pytest.main(["test/","--html=reportes/reportes_html/report.html","--self-contained-html","-v"])
+pytest.main(["test/","--html=reports/report.html","--self-contained-html","-v"])
 
 
 

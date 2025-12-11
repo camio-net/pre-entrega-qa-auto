@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          path: reportes/reportes_html/report.html
+          path: reports/
 
       - name: Subir logs de pruebas
         uses: actions/upload-artifact@v4
