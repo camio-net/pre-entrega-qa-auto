@@ -10,6 +10,7 @@ jobs:
     env:
       PYTHON_VERSION: '3.12'
       PIP_CACHE: ~/.cache/pip
+      TZ: America/Argentina/Buenos_Aires
 
     steps:
       #1 Checkout the repository
