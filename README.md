@@ -107,13 +107,6 @@ en cada prueba del archivo:
 
     tests/test_api_request.py
 
-4.  Ejecutá:
-
-```{=html}
-<!-- -->
-```
-    python run_test.py
-
 ------------------------------------------------------------------------
 
 ## ▶️ Cómo ejecutar el proyecto
