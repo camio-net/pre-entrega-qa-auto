@@ -91,7 +91,7 @@ Formato:
 1.  Registrate en **https://reqres.in** y obtené tu **API Key**.\
 2.  Reemplazá tu clave en `conftest.py`:
 
-``` python
+```python
 @pytest.fixture
 def header_request():
     return {"Authorization": "Bearer TU_API_KEY_AQUI"}
@@ -99,7 +99,7 @@ def header_request():
 
 3.  Eliminá la etiqueta:
 
-``` python
+```python
 @pytest.mark.skip(reason="Solo para pruebas de API")
 ```
 
@@ -148,6 +148,23 @@ en cada prueba del archivo:
 
 -   `datos_usuarioValido.csv`\
 -   `productos.json`
+
+------------------------------------------------------------------------
+
+## 🔄 Integración Continua (CI/CD) — GitHub Actions
+
+Este proyecto implementa **Integración Continua (CI/CD)** utilizando  
+**GitHub Actions**, permitiendo una validación automática y constante del código.
+
+### ✔ Funcionalidades implementadas
+
+- Ejecución automática de **todas las pruebas** en cada `push` o `pull request`
+- Generación del **reporte HTML** durante el pipeline
+- Capturas de pantalla y logs subidos como **artefactos de ejecución**
+- Validación continua del proyecto antes de integrar cambios a `main` o `develop`
+- Ahorro de tiempo y reducción de errores gracias al proceso automatizado
+
+GitHub Actions garantiza que **cada cambio en el repositorio se verifique**, manteniendo la calidad y estabilidad del proyecto.
 
 ------------------------------------------------------------------------
 
