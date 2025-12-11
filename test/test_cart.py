@@ -27,7 +27,7 @@ def test_cart(login_page, usuario, password, debe_funcionar):
 
         productos_carrito = cartPage.obtener_items_carrito()
         logger.info("Validando que el carrito contenga un producto")
-        assert len(productos_carrito) == 50, "El carrito debe contener un producto."
+        assert len(productos_carrito) == 1, "El carrito debe contener un producto."
         
 
     except Exception as e:
