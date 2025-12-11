@@ -10,18 +10,13 @@ jobs:
     env:
       PYTHON_VERSION: '3.12'
       PIP_CACHE: ~/.cache/pip
-      TZ: America/Argentina/Buenos_Aires
+      
 
     steps:
       #1 Checkout the repository
       - name: Checkout codigo
         uses: actions/checkout@v4
 
-      # Ajustar timezone a Buenos Aires
-      - name: Set timezone to Argentina (system)
-        run: |
-          sudo timedatectl set-timezone America/Argentina/Buenos_Aires
-          date  
 
       #2 cache de pip
       - name: Cache dependencia
