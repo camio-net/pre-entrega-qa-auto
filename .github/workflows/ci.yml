@@ -42,7 +42,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          path: reports/
+          path: |
+              reports/report.html            # incluir reporte principal
+              reports/screenshots/**         # incluir screenshots
+              !reports/historial_report/**   # excluir historial
 
       - name: Subir logs de pruebas
         uses: actions/upload-artifact@v4
