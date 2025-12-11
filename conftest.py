@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 from datetime import datetime
 import pathlib
-target = pathlib.Path("reportes/screenshots")
+target = pathlib.Path("reports/screenshots")
 target.mkdir(parents=True, exist_ok=True)
 
 @pytest.fixture

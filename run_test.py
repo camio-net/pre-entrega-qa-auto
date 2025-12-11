@@ -1,6 +1,33 @@
 import pytest
+from datetime import datetime, timedelta, timezone
 
-pytest.main(["test/","--html=reports/report.html","--self-contained-html","-v"])
+# Zona horaria Argentina (UTC-3)
+argentina = timezone(timedelta(hours=-3))
+fecha_actual = datetime.now(argentina).strftime("%Y-%m-%d_%H-%M")
+
+# Rutas de los reportes
+report_html = "reports/report.html"
+report_html_historial = f"reports/historial_report/report_{fecha_actual}.html"
+
+pytest.main(["test/", "--html", report_html, "--self-contained-html", "-v"])
+
+
+pytest.main(["test/", "--html", report_html_historial, "--self-contained-html", "-v"])
+
+
+
+
+
+
+
+
+
+
+
+
+# import pytest
+
+# pytest.main(["test/","--html=reports/report.html","--self-contained-html","-v"])
 
 
 
