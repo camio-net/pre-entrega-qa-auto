@@ -1,32 +1,33 @@
 # 🚀 Proyecto de Automatización QA -- SauceDemo
 
-Automatización UI + API con Selenium, Pytest y Requests
+Automatización **UI + API** utilizando **Selenium, Pytest y Requests**.
 
 ## 📌 Descripción del Proyecto
 
 Este proyecto forma parte del trabajo final del curso **Tester QA
 Automation**.\
-El objetivo es automatizar pruebas funcionales sobre el sitio
+El objetivo es automatizar pruebas funcionales sobre el sitio\
 **https://www.saucedemo.com**, aplicando buenas prácticas y simulando
-situaciones reales de un usuario final.
+escenarios reales de uso.
 
-Las pruebas incluyen flujos completos de login, interacción con
-inventario, carrito de compras y automatización de API utilizando
-**Reqres**.
-
-El proyecto está desarrollado en **Python**, estructurado bajo el patrón
-**Page Object Model (POM)** y con generación automática de reportes,
+Las pruebas cubren login, inventario, carrito de compras y
+automatización de API con **Reqres**.\
+El proyecto está desarrollado en **Python**, estructurado bajo **Page
+Object Model (POM)** y cuenta con generación automática de reportes,
 logs y capturas de pantalla.
+
+------------------------------------------------------------------------
 
 ## 🎯 Objetivos
 
 -   Validar el correcto funcionamiento del **login**.\
--   Verificar la redirección a la página principal luego de iniciar
-    sesión.\
+-   Verificar la redirección al **home** luego de iniciar sesión.\
 -   Probar el comportamiento del **carrito de compras**.\
 -   Ejecutar pruebas automatizadas de **API REST**.\
 -   Generar reportes HTML, logs y evidencias.\
 -   Mantener un proyecto escalable y con arquitectura profesional.
+
+------------------------------------------------------------------------
 
 ## 🛠 Tecnologías Utilizadas
 
@@ -38,9 +39,9 @@ logs y capturas de pantalla.
 -   CSV / JSON\
 -   Logging nativo de Python
 
-## 📁 Arquitectura del Proyecto (POM)
+------------------------------------------------------------------------
 
-La estructura está basada en Page Object Model:
+## 📁 Arquitectura del Proyecto (POM)
 
     📦 Proyecto-Automation
      ┣ 📂 datos
@@ -49,23 +50,27 @@ La estructura está basada en Page Object Model:
      ┣ 📂 logs
      ┃ ┗ suite.log
      ┣ 📂 pages
-     ┣ 📂 reportes
-     ┣ ┣ 📂 reportes_html (Historial de reportes por fecha y hora de finalizacion)
-     ┣ ┗ 📂 screenshots
+     ┣ 📂 reports
+     ┃ ┣ 📂 historial_report
+     ┃ ┗ 📂 screenshots
      ┣ 📂 tests
      ┣ 📂 utils
+     ┣ 📂 .github
+     ┃ ┗ 📂 workflows
+     ┃   ┗ ci.yml
      ┣ conftest.py
      ┣ run_test.py
-     ┣ report.html (Ultimo reporte realizado)
      ┗ README.md
+
+------------------------------------------------------------------------
 
 ## 📊 Reportes, Logs y Capturas
 
 ### ✔ Reportes HTML automáticos
 
-Se genera un nuevo reporte en:
+Cada ejecución genera un reporte nuevo dentro de:
 
-    reportes/reportes_html/
+    reports/historial_report/
 
 Formato:
 
@@ -77,11 +82,13 @@ Formato:
 
 ### ✔ Capturas de pantalla
 
-    reportes/screenshots/
+    reports/screenshots/
+
+------------------------------------------------------------------------
 
 ## ⚙️ Configuración para pruebas de API (Reqres)
 
-1.  Registrate en https://reqres.in/ y obtené tu API Key.
+1.  Registrate en **https://reqres.in** y obtené tu **API Key**.\
 2.  Reemplazá tu clave en `conftest.py`:
 
 ``` python
@@ -90,11 +97,15 @@ def header_request():
     return {"Authorization": "Bearer TU_API_KEY_AQUI"}
 ```
 
-3.  Descomentá en `run_test.py`:
+3.  Eliminá la etiqueta:
 
 ``` python
-# "test/test_api_request.py",
+@pytest.mark.skip(reason="Solo para pruebas de API")
 ```
+
+en cada prueba del archivo:
+
+    tests/test_api_request.py
 
 4.  Ejecutá:
 
@@ -103,45 +114,53 @@ def header_request():
 ```
     python run_test.py
 
+------------------------------------------------------------------------
+
 ## ▶️ Cómo ejecutar el proyecto
 
 ### 1️⃣ Instalar dependencias
 
-    pip install selenium pytest requests faker
+    pip install -r requirements.txt
 
 ### 2️⃣ Ejecutar todas las pruebas
 
     python run_test.py
 
+------------------------------------------------------------------------
+
 ## 🧪 Pruebas incluidas
 
-### UI --- Login
+### 🔹 UI --- Login
 
 -   Login exitoso\
 -   Login fallido\
--   Login con Faker
+-   Login utilizando Faker
 
-### UI --- Inventario / Carrito
+### 🔹 UI --- Inventario / Carrito
 
 -   Validación de productos\
--   Agregar/eliminar productos\
--   Contador del carrito
+-   Agregar y eliminar productos\
+-   Validación del contador del carrito
 
-### API --- Reqres
+### 🔹 API --- Reqres
 
 -   GET Users\
 -   POST Create User\
 -   DELETE User\
--   Validación de códigos y JSON
+-   Validación de códigos de estado y estructura JSON
+
+------------------------------------------------------------------------
 
 ## 📦 Manejo de Datos Externos
 
 -   `datos_usuarioValido.csv`\
 -   `productos.json`
 
+------------------------------------------------------------------------
+
 ## ✔ Conclusión
 
-Este proyecto aplica conceptos fundamentales y avanzados de
-automatización QA con una arquitectura escalable y profesional.
-
-python pip install -r requirements.txt
+Este proyecto implementa conceptos fundamentales y avanzados de
+automatización QA, aplicando buenas prácticas y una arquitectura
+profesional basada en POM, generando reportes completos y permitiendo
+escalabilidad para futuras mejoras.
